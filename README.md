@@ -13,4 +13,7 @@ in this project ive learned many different things, such as:
 
 -how to use certain flutter functions Like setState
 
+
 ive learned all of these through the flutter docs, and youtube videos
+
+to see the main work ive did, please look inside the 'lib' directory.
