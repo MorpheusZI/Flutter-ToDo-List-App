@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/constants/colors.dart';
-import '/model/todo.dart';
+import '../model/todo.dart';
 import 'package:myapp/widgets/todo_item.dart';
 
+//making the "Home" as a statefull widget
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
   @override
@@ -14,27 +15,32 @@ class _HomeState extends State<Home> {
   List<Todo> _foundTodo = [];
   final _todoController = TextEditingController();
 
+  //initializing search List state
   @override
   void initState() {
     _foundTodo = todosList;
     super.initState();
   }
 
+  //main home widget
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: tdBGcolor,
       appBar: buildAppbar(),
+      //The Todo List
       body: Stack(
         children: [
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
             child: Column(
               children: [
+                //references searchbox bar
                 searchbox(),
                 Expanded(
                   child: ListView(
                     children: [
+                      //TodoItem styling
                       Container(
                         margin: const EdgeInsets.only(top: 39, bottom: 20),
                         child: const Text(
@@ -43,6 +49,7 @@ class _HomeState extends State<Home> {
                               fontSize: 30, fontWeight: FontWeight.w500),
                         ),
                       ),
+                      //Todo Item mapping
                       for (Todo todoo in _foundTodo.reversed)
                         TodoItem(
                           todo: todoo,
@@ -55,6 +62,7 @@ class _HomeState extends State<Home> {
               ],
             ),
           ),
+          //add a toDo Item button styling
           Align(
             alignment: Alignment.bottomCenter,
             child: Row(children: [
@@ -100,18 +108,21 @@ class _HomeState extends State<Home> {
     );
   }
 
+  //Change handler function
   void _handleTodoChange(Todo todo) {
     setState(() {
       todo.isDone = !todo.isDone;
     });
   }
 
+  //delete function
   void _deleteToDoItem(String id) {
     setState(() {
       todosList.removeWhere((element) => element.id == id);
     });
   }
 
+  //Search Function
   void _runFilter(String enteredKeyword) {
     List<Todo> results = [];
     if (enteredKeyword.isEmpty) {
@@ -137,6 +148,7 @@ class _HomeState extends State<Home> {
     _todoController.clear();
   }
 
+  //searchbox styling
   Widget searchbox() {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),

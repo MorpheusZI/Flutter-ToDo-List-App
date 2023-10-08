@@ -1,3 +1,5 @@
+// making a Todo Class and constructor
+
 class Todo {
   String? id;
   String? todoText;

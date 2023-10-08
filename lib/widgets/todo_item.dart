@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import '../constants/colors.dart';
 import '../model/todo.dart';
 
+//todo item component
+
+//Added Constructor and functions for the functionality
+
 class TodoItem extends StatelessWidget {
   final Todo todo;
   final onTodoChanged;
@@ -15,6 +19,7 @@ class TodoItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+        // Todo Item styling
         margin: const EdgeInsets.only(bottom: 20),
         child: ListTile(
           onTap: () {
